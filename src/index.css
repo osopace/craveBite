@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@base {
+  * {
+    @apply m-0  p-0 box-border;
+  }
+  html {
+    font-size: 90%;
+  }
+}
+@layer utilities {
+  .animate-slideUp {
+    animation: slideUp 0.25s ease-out;
+  }
+  .leaflet-container {
+    height: 10%;
+    width: 10%;
+  }
+  .address-card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .address-header select {
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+
+  .map-wrapper {
+    width: 100%;
+    height: 220px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .map-box {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .address-info {
+    font-size: 14px;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .manual-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+:root {
+  --background: #fff9f6;
+  --card: #ffffff;
+
+  --foreground: #1b1b1b;
+  --border: #00000014;
+  --input: #ffffff;
+  --primary: #ff6a3d;
+  --navlink: #ff6a3d;
+  --logoColor: #ff6a3d;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f6;
+  --secondary-foreground: #444444;
+  --muted-foreground: #8a8a8a;
+  --success: #16a34a;
+  --success-foreground: #ffffff;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --font-family-body: Inter, sans-serif;
+}
