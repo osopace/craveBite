@@ -11,8 +11,8 @@ export function RecipeProvider({ children }) {
   const [recipeNo, setErecipeNo] = useState(1);
   const [recipeTypes, setrecipeTypes] = useState("soup");
 
-  // const apiKey = "ca64f65e7e7f46be9df62cf6f6d8a8f6";
-  const apiKey = "ca64f65e7e7f46be9df62cf6f6d8a8f";
+  const apiKey = "ca64f65e7e7f46be9df62cf6f6d8a8f6";
+  // const apiKey = "ca64f65e7e7f46be9df62cf6f6d8a8f";
   const url = `https://api.spoonacular.com/recipes/random?number=${recipeNo}&tags=${recipeTypes}&&excludeIngredients=quinoa&apiKey=${apiKey}`;
 
   useEffect(() => {
