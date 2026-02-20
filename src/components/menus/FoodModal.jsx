@@ -86,7 +86,7 @@ export default function FoodModal({ onClose, data, setTooltip }) {
 
     <div className="fixed inset-0 z-50 flex md:items-center items-end justify-center bg-black/60 backdrop-blur-sm">
       {/* 🔹 MODAL CONTAINER */}
-      <div className="relative w-full  max-w-[900px] md:max-h-[90vh] max-h-[85vh] bg-[#fff9f6] rounded-b-none rounded-t-3xl   md:rounded-xl shadow-2xl overflow-hidden flex-col md:flex-row flex animate-slideUp">
+      <div className="relative w-full  max-w-[900px] md:max-h-[90vh] max-h-[80vh] bg-[#fff9f6] rounded-b-none rounded-t-3xl   md:rounded-xl shadow-2xl overflow-hidden flex-col md:flex-row flex animate-slideUp">
         {/* IMAGE COLUMN */}
         <div className="md:w-[55%] w-full bg-gray-100">
           <img

@@ -6,7 +6,7 @@ import router from "./routes";
 import { RecipeProvider } from "./context/RecipeList.jsx";
 import { OrderItems } from "./context/Orderitems.jsx";
 import { Location } from "./context/location.jsx";
-import { Toaster } from "react-hot-toast"; // ✅ import
+import { Toaster } from "react-hot-toast"; // ✅
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

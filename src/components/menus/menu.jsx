@@ -18,7 +18,7 @@ export default function RestaurantHeader({ menu }) {
           />
         </div>
 
-        <div className="max-w-[1440px] md:block hidden  w-full absolute md:bottom-[15%]  mx-auto px-10 mt-20 mb-10  ">
+        <div className="max-w-[1440px] md:block hidden w-full relative -mt-20 mx-auto px-10 mb-10">
           <div className="bg-white   border border-black/10 rounded-lg p-8 md:items-center shadow-lg flex flex-col md:flex-row md:justify-between">
             <div>
               <h1 className="md:text-3xl text-lg font-extrabold mb-3">
@@ -50,13 +50,13 @@ export default function RestaurantHeader({ menu }) {
 
             <button
               onClick={() => setHisOpen(true)}
-              className="bg-[var(--logoColor)] hover:bg-[#c46635] h-12 text-white px-6 py-2 rounded-full font-semibold transition-all shadow-md active:scale-95"
+              className="bg-[var(--logoColor)] hover:bg-[#c46635]  text-white px-6 py-2 rounded-full font-semibold transition-all shadow-md active:scale-95"
             >
               + Add to Order
             </button>
           </div>
         </div>
-        <div className="relative w-full px-4 -mt-[25%] mb-6 z-10 md:hidden block">
+        <div className="relative w-full px-4 -mt-32 mb-6 z-10 md:hidden block">
           <div className="bg-white rounded-[24px] p-6 shadow-xl border border-gray-100 max-w-md mx-auto">
             {/* Title Section */}
             <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight mb-2">

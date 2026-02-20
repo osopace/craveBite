@@ -23,7 +23,7 @@ export default function MenuPage() {
         <Navbar />
         <RestaurantHeader menu={recipes?.[0]} />
 
-        <div className=" mx-auto px-6 md:px-10 md:mt-16 mt-8 flex flex-col md:grid grid-cols-[240px_1fr] gap-y-8   md:gap-12   md:p-20">
+        <div className=" mx-auto px-6 md:px-10 md:mt-16 mt-8 flex flex-col md:grid grid-cols-[240px_1fr] gap-y-8   md:gap-12  ">
           <Category categories={categories} active={recipeTypes} />
 
           <main>
