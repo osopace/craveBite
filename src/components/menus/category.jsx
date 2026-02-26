@@ -6,6 +6,8 @@ export default function CategorySidebar({ categories, active }) {
   const containerRef = useRef(null);
   const buttonRefs = useRef([]);
 
+  
+
   // Scroll active button into view on mobile only
   useEffect(() => {
     const index = categories.findIndex(

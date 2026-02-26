@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import RouteLoader from "../components/loaders/routesLoader";
 
 const NavberResponsive = ({
@@ -10,8 +10,17 @@ const NavberResponsive = ({
   setSidebar,
   sidebar,
 }) => {
+  const { pathname } = useLocation();
+
+  const navLinks = [
+    { to: "/", label: "Home" },
+    { to: "/menu", label: "Menu" },
+    { to: "/order", label: "Order" },
+    { to: "/checkout", label: "Checkout" },
+  ];
+
   return (
-    <nav className="w-full flex relative items-center justify-between py-3 px-2 md:p-4 bg-[var(--background)] sticky  top-0 border-b border-[var(--border)] z-50">
+    <nav className="w-full flex relative items-center justify-between py-3 px-2 md:p-4 bg-[var(--background)] sticky top-0 border-b border-[var(--border)] z-50">
       {/* ================= LEFT ================= */}
       {!sidebar && (
         <div className="flex md:hidden items-center gap-3">
@@ -92,21 +101,32 @@ const NavberResponsive = ({
         </div>
       </div>
 
-      {/* ================= CENTER NAV (FIXED) ================= */}
+      {/* ================= CENTER NAV ================= */}
       <div className="hidden md:flex flex-1 justify-center">
         <ul className="flex items-center gap-x-8 font-semibold text-[var(--primary)]">
-          <li className="hover:text-[var(--navlink)] cursor-pointer">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="hover:text-[var(--navlink)] cursor-pointer">
-            <Link to="/menu">Menu</Link>
-          </li>
-          <li className="hover:text-[var(--navlink)] cursor-pointer">
-            <Link to="/order">Order</Link>
-          </li>
-          <li className="hover:text-[var(--navlink)] cursor-pointer">
-            <Link to="/checkout">Checkout</Link>
-          </li>
+          {navLinks.map(({ to, label }) => {
+            const isActive = pathname === to;
+            return (
+              <li key={to}>
+                <Link
+                  to={to}
+                  className={`relative pb-1 transition-colors duration-200
+                    ${
+                      isActive
+                        ? "text-[var(--logoColor)]"
+                        : "hover:text-[var(--navlink)]"
+                    }
+                  `}
+                >
+                  {label}
+                  {/* Underline indicator */}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-[var(--logoColor)] rounded-full" />
+                  )}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
@@ -119,7 +139,6 @@ const NavberResponsive = ({
           <Icon icon="lucide:shopping-bag" width={20} />
         </button>
 
-        {/* Mobile Menu */}
         {!sidebar && (
           <Icon
             icon="lucide:menu"
@@ -129,7 +148,7 @@ const NavberResponsive = ({
           />
         )}
       </div>
-      <RouteLoader></RouteLoader>
+      <RouteLoader />
     </nav>
   );
 };

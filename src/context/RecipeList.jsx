@@ -8,18 +8,29 @@ export function RecipeProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [recipeNo, setErecipeNo] = useState(1);
+  const [recipeNo, setErecipeNo] = useState(4);
   const [recipeTypes, setrecipeTypes] = useState("soup");
-
-  // const apiKey = "ca64f65e7e7f46be9df62cf6f6d8a8f6";
-  const apiKey = "ca64f65e7e7f46be9df62cf6f6d8a8f";
-  const url = `https://api.spoonacular.com/recipes/random?number=${recipeNo}&tags=${recipeTypes}&&excludeIngredients=quinoa&apiKey=${apiKey}`;
+  const apiKey1 = import.meta.env.VITE_API_KEY;
+  const apiKey2 = import.meta.env.VITE_API_KEY_1;
 
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
         setLoading(true);
-        const response = await fetch(url);
+
+        const tryFetch = async (apiKey) => {
+          const url = `https://api.spoonacular.com/recipes/random?number=${recipeNo}&tags=${recipeTypes}&excludeIngredients=quinoa&apiKey=${apiKey}`;
+          return await fetch(url);
+        };
+
+        let response = await tryFetch(apiKey1);
+
+        // Fallback to second key on 401
+        if (response.status === 401 && apiKey2) {
+          console.warn("Primary key failed, trying backup key...");
+          response = await tryFetch(apiKey2);
+        }
+
         if (!response.ok) {
           const stored = localStorage.getItem("data");
           const data = stored ? JSON.parse(stored) : { recipes: [] };
@@ -27,20 +38,9 @@ export function RecipeProvider({ children }) {
           throw new Error("Failed to fetch recipes");
         }
 
-        if (response) {
-          const data = await response.json();
-          localStorage.setItem("data", JSON.stringify(data));
-          setRecipes(data.recipes || []);
-        }
-
-        // const response = await fetch(url);
-        // if (!response.ok) {
-        //   const stored = localStorage.getItem("data");
-        //   const data = stored ? JSON.parse(stored) : { recipes: [] };
-
-        //   console.log(data);
-        //   setRecipes(data.recipes || []);
-        // }
+        const data = await response.json();
+        localStorage.setItem("data", JSON.stringify(data));
+        setRecipes(data.recipes || []);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -49,7 +49,8 @@ export function RecipeProvider({ children }) {
     };
 
     fetchRecipe();
-  }, [url, recipeTypes]);
+  }, [recipeTypes]);
+  // }
 
   return (
     <RecipeContext.Provider

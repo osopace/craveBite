@@ -8,6 +8,7 @@ import Profile from "../pages/profile";
 import Login from "../pages/login";
 import Signup from "../pages/signup";
 import Reset from "../pages/passwordReset";
+import NotFound from "../pages/notFound";
 
 //pages
 
@@ -32,21 +33,23 @@ const router = createBrowserRouter([
     path: "/PaymentSuccess",
     element: <PaymentSuccess />,
   },
-  {
-    path: "/profile",
-    element: <Profile />,
-  },
-  {
-    path: "/Auth",
-    element: <Login />,
-  },
-  {
-    path: "/Signup",
-    element: <Signup />,
-  },
-  {
-    path: "/passwordReset",
-    element: <Reset />,
-  },
+
+  // {
+  //   path: "/profile",
+  //   element: <Profile />,
+  // },
+  // {
+  //   path: "/Auth",
+  //   element: <Login />,
+  // },
+  // {
+  //   path: "/Signup",
+  //   element: <Signup />,
+  // },
+  // {
+  //   path: "/passwordReset",
+  //   element: <Reset />,
+  // },
+  { path: "*", element: <NotFound /> },
 ]);
 export default router;

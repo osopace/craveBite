@@ -27,11 +27,14 @@ export default function foodCard({ prop }) {
         }}
         className="bg-[var(--card)]  rounded-[var(--radius-xl)] border border-[var(--border)] overflow-hidden flex flex-col cursor-pointer hover:scale-105 transition-transform"
       >
-        <img
-          src={prop.image}
-          alt={prop.title}
-          className="h-48 w-full object-cover"
-        />
+        <div className="relative h-48">
+          <img
+            src={prop.image}
+            alt={prop.title}
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-orange-300/40 via-orange-200/10 to-transparent" />
+        </div>
         <div className="p-5 flex flex-col flex-1">
           <div className="flex justify-between items-start mb-2">
             <h3 className="font-bold text-lg">
