@@ -19,7 +19,7 @@ export function RecipeProvider({ children }) {
         setLoading(true);
 
         const tryFetch = async (apiKey) => {
-          const url = `https://api.spoonacular.com/recipes/random?number=${recipeNo}&tags=${recipeTypes}&excludeIngredients=quinoa&apiKey=${apiKey}`;
+          const url = `https://api.spoonacular.com/recipes/random?number=${recipeNo}&tags=${recipeTypes}&excludeIngredients=quinoa&apiKey=${apiKey1}`;
           return await fetch(url);
         };
 
