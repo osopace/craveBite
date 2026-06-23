@@ -9,7 +9,7 @@ export function RecipeProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [recipeNo, setErecipeNo] = useState(4);
-  const [recipeTypes, setrecipeTypes] = useState("soup");
+  const [recipeTypes, setrecipeTypes] = useState("vegetarian");
   const apiKey1 = import.meta.env.VITE_API_KEY;
   const apiKey2 = import.meta.env.VITE_API_KEY_1;
 
